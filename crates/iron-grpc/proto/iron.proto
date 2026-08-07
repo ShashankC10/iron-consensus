@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package iron.v1;
+
+message Envelope {
+  uint32 envelope_version = 1;
+  bytes cluster_id = 2;
+  string source_node_id = 3;
+  string destination_node_id = 4;
+  bytes message_id = 5;
+  optional bytes correlation_id = 6;
+  string protocol = 7;
+  string message_type = 8;
+  uint32 schema_version = 9;
+  uint32 delivery_attempt = 10;
+  bytes payload = 11;
+}
+
+message DeliveryAck { bool accepted = 1; }
+
+service NodeTransport {
+  rpc Deliver(Envelope) returns (DeliveryAck);
+}

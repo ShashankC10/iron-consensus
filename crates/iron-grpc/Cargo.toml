@@ -1,0 +1,20 @@
+[package]
+name = "iron-grpc"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+async-trait.workspace = true
+iron-core = { path = "../iron-core" }
+prost.workspace = true
+tonic.workspace = true
+thiserror.workspace = true
+
+[build-dependencies]
+tonic-build.workspace = true
+
+[lints]
+workspace = true

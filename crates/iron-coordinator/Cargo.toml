@@ -1,0 +1,17 @@
+[package]
+name = "iron-coordinator"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+async-trait.workspace = true
+iron-core = { path = "../iron-core" }
+iron-grpc = { path = "../iron-grpc" }
+iron-2pc = { path = "../iron-2pc" }
+tokio.workspace = true
+
+[lints]
+workspace = true

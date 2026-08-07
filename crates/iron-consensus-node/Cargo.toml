@@ -1,0 +1,17 @@
+[package]
+name = "iron-consensus-node"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+async-trait.workspace = true
+iron-core = { path = "../iron-core" }
+iron-grpc = { path = "../iron-grpc" }
+iron-raft = { path = "../iron-raft" }
+tokio.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,18 @@
+[package]
+name = "iron-runtime"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+async-trait.workspace = true
+iron-core = { path = "../iron-core" }
+iron-protocol = { path = "../iron-protocol" }
+iron-transport = { path = "../iron-transport" }
+iron-wal = { path = "../iron-wal" }
+thiserror.workspace = true
+
+[lints]
+workspace = true

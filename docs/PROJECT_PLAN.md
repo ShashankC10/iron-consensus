@@ -308,19 +308,19 @@ Tonic, Prost, tracing, CLI parsing, and metrics dependencies wait until the runt
 ## 12. Layer 1 non-goals
 
 Layer 1 does not implement 2PC, 3PC, Raft, Multi-Paxos, elections, quorum tracking, membership changes, or client semantics.
-It does not provide gRPC generated code, listeners, TLS, authentication, authorization, observability exporters, or deployment manifests.
+It does not yet provide TLS, authentication, authorization, observability exporters, or deployment manifests. The Protobuf schema, generated gRPC service, and listener shells are now present.
 It does not provide coordinator/participant binaries, a general runtime, automatic retry loops, snapshotting, log compaction, or WAL segments.
 It does not promise Byzantine fault tolerance, exactly-once delivery, distributed transactions across protocols, or compatibility with unknown future versions.
 It does not optimize throughput before recovery semantics and deterministic tests are proven.
 
 ## 13. Future milestones
 
-Milestone 2 adds `iron-runtime`, `iron-grpc`, Protobuf v1, tracing/metrics, and graceful lifecycle management.
+Milestone 2 adds `iron-runtime` and `iron-grpc` Protobuf v1 envelope conversion. The WAL-before-effects runtime, wire adapter, listener shells, and inbound protocol dispatch are implemented; outbound routing, tracing, metrics, and graceful process management remain.
 It also adds independently deployable `iron-coordinator`, `iron-participant`, and symmetric `iron-consensus-node` applications.
-Milestone 3 adds 2PC with durable coordinator decisions, participant prepare state, retry/recovery, and crash matrix tests.
-Milestone 4 adds 3PC with explicit timing assumptions, pre-commit state, partitions, and documented non-blocking limits.
-Milestone 5 adds Raft leader election, replicated log, snapshot/install-snapshot, membership changes, and linearizability tests.
-Milestone 6 adds Multi-Paxos proposer/acceptor/learner roles, stable ballots, recovery, and refinement/model tests.
+Milestone 3 adds 2PC with durable coordinator decisions, participant prepare state, retry/recovery, and crash matrix tests. The deterministic coordinator/participant cores are implemented; durable protocol records and crash matrices remain.
+Milestone 4 adds 3PC with explicit timing assumptions, pre-commit state, partitions, and documented non-blocking limits. The phase transitions and partition-blocking outcome are implemented; runtime integration remains.
+Milestone 5 adds Raft leader election, replicated log, snapshot/install-snapshot, membership changes, and linearizability tests. Election, vote handling, conflict resolution, and append replication are implemented; snapshots, membership, commit/apply integration, and model tests remain.
+Milestone 6 adds Multi-Paxos proposer/acceptor/learner roles, stable ballots, recovery, and refinement/model tests. Ballot, promise, accept, quorum, and decision cores are implemented; durable recovery and refinement/model tests remain.
 Milestone 7 adds WAL segmentation/compaction, TLS and identity, backpressure, rolling-version compatibility, packaging, and deployment hardening.
 
 Protocol crates will be `iron-2pc`, `iron-3pc`, `iron-raft`, and `iron-multipaxos`.
@@ -346,5 +346,5 @@ The coordinator and participant applications remain separate Cargo packages and 
 - [ ] `cargo test --workspace --all-features` passes, including property and integration suites.
 - [ ] `cargo deny check` passes after licenses/advisories are configured.
 
-Layer 1 was subsequently verified locally with Rust 1.85.0: formatting, strict Clippy, all 54 unit and integration tests, and the dependency policy audit pass. `Cargo.lock` was generated with MSRV-aware dependency resolution.
+The foundation and protocol-core increment was verified locally with Rust 1.85.0: formatting, strict Clippy, all 60 unit and integration tests, and the dependency policy audit pass. `Cargo.lock` was generated with MSRV-aware dependency resolution.
 Before merge, perform a static architecture review for dependency cycles, public invalid-state escape hatches, nondeterministic collections, and effects that can run before durability.
