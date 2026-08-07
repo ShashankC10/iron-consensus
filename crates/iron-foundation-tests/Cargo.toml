@@ -1,0 +1,21 @@
+[package]
+name = "iron-foundation-tests"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+async-trait.workspace = true
+bytes.workspace = true
+iron-core = { path = "../iron-core" }
+iron-protocol = { path = "../iron-protocol" }
+iron-testkit = { path = "../iron-testkit" }
+iron-transport = { path = "../iron-transport" }
+iron-wal = { path = "../iron-wal" }
+tempfile.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true

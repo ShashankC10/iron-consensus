@@ -1,0 +1,21 @@
+[package]
+name = "iron-wal"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+bytes.workspace = true
+crc32c.workspace = true
+fs2.workspace = true
+iron-core = { path = "../iron-core" }
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true
+

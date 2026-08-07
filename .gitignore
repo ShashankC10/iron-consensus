@@ -1,0 +1,31 @@
+# Rust build output
+/target/
+
+# Local runtime state
+/data/
+*.log
+
+# Test and coverage artifacts
+/coverage/
+*.profraw
+*.profdata
+lcov.info
+cobertura.xml
+
+# Local environment files (keep templates committed)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Editor and operating-system metadata
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary and backup files
+*.tmp
+*.bak
